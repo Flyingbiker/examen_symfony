@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Accueil
+{% endblock %}
+
+{% block body %}
+  <div class="jumbotron">
+    <div class="container">
+        <h1 class="display-4">
+        Bienvenue sur l'application PROJECT HUB
+        </h1>
+        <p class="lead">
+        L'application de gestion des projets des Managers
+        </p>
+        <hr class="my-4" />
+        <p>
+        Connexion requise
+        </p>
+        <p class="lead">
+        <a class="btn btn-primary btn-lg" href="{{ path('app_login') }}" role="button">Connexion</a>
+        </p>
+    </div>
+  </div>
+{% endblock %}

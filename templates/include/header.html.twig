@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{{ path('app') }}">Accueil</a>
+  <button class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      {% if app.user %}
+        <li class="nav-item active">
+          <a class="nav-link" href="{{ path('projects_list') }}">
+            Voir liste des projets <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        {# <li class="nav-item">
+          <a class="nav-link" href="{{ path('products_add') }}">
+            Ajouter un fromage
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path('products_add2') }}">
+            Ajouter un fromage avec le bundel Form
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path('user_list') }}">
+            Liste des utilisateurs
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path('user_add') }}">
+            Ajouter un utilisateur
+          </a>
+        </li> #}
+      {% endif %}
+    </ul>
+    {% if app.user %}
+      <a href="{{ path('app_logout') }} " class="btn btn-primary">
+        Déconnexion
+      </a>
+    {% else %}
+      <a href="{{ path('app_login') }} " class="btn btn-primary">Connexion</a>
+    {% endif %}
+  </div>
+</nav>
