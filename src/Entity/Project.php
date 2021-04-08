@@ -92,14 +92,6 @@ class Project
         return $this;
     }
 
-    /**
-     * @return Collection|task[]
-     */
-    public function getTask(): Collection
-    {
-        return $this->task;
-    }
-
     public function getStatus(): ?string
     {
         return $this->status;

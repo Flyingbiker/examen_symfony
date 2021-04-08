@@ -1,14 +1,64 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des projets{% endblock %}
+{% block title %}
+  Liste des projets
+{% endblock %}
 
 {% block body %}
-    <div class="container">
-        <h1>Liste des projets</h1>
+  <div class="container">
+    <h1>
+      Liste des projets
+    </h1>
+    <a href="{{ path('projects_add') }}" class="btn btn-primary">
+      Ajouter un projet
+    </a>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">
+            #
+          </th>
+          <th scope="col">
+            Nom
+          </th>
+          <th scope="col">
+            Statut
+          </th>
+          <th scope="col">
+            Tâches
+          </th>
+          <th scope="col">
+            Ajouté le
+          </th>
+          <th scope="col">
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody>
         {% for project in projects %}
-
-        {% endfor %}    
-    </div>
-   
-
+          <tr>
+            <th scope="row">
+                {{ project.id }}
+            </th>
+            <td>
+                {{ project.name }}
+            </td>
+            <td>
+                {{ project.status }}
+            </td>
+            <td>
+                {{ project.tasks |length }}
+            </td>
+            <td>
+                {{ project.startedAt |date("d/m/Y") }}
+            </td>
+            <td>
+                <a href="{{ path('projects_detail', {id: project.id } ) }} ">Gérer</a> 
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 {% endblock %}
