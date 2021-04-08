@@ -6,7 +6,7 @@
 
 {% block body %}
   <div class="container">
-    <h1>
+    <h1 class="text-center">
       Liste des projets
     </h1>
     <a href="{{ path('projects_add') }}" class="btn btn-primary">
@@ -19,7 +19,7 @@
             #
           </th>
           <th scope="col">
-            Nom
+            Nom du projet
           </th>
           <th scope="col">
             Statut
@@ -45,7 +45,7 @@
                 {{ project.name }}
             </td>
             <td>
-                {{ project.status }}
+                {{ project.status|capitalize }}
             </td>
             <td>
                 {{ project.tasks |length }}

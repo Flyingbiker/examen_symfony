@@ -18,27 +18,17 @@
             Voir liste des projets <span class="sr-only">(current)</span>
           </a>
         </li>
-        {# <li class="nav-item">
-          <a class="nav-link" href="{{ path('projects_add') }}">
-            Ajouter un projet
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('products_add2') }}">
-            Ajouter un fromage avec le bundel Form
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('user_list') }}">
-            Liste des utilisateurs
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ path('user_add') }}">
-            Ajouter un utilisateur
-          </a>
-        </li> #}
       {% endif %}
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('api_projects_list') }}">
+          API List
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('api_projects_detail', {id : 1}) }}">
+          API detail (default 1)
+        </a>
+      </li>       
     </ul>
     {% if app.user %}
       <a href="{{ path('app_logout') }} " class="btn btn-primary">

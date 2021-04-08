@@ -52,14 +52,30 @@ class ProjectController extends AbstractController
 
     }
 
-        /**
-     * @Route("/projects/{id<\d+>}", name="projects_detail", methods={"GET"})
+    /**
+     * @Route("/projects/{id<\d+>}", name="projects_detail", methods={"GET","POST"})
      */
-    public function detail(int $id, ProjectRepository $projectRepository): Response
+    public function detail(int $id, Request $request,
+        ProjectRepository $projectRepository, 
+        EntityManagerInterface $entityManagerInterface): Response
     {
+        
         $project = $projectRepository->find($id);
         $tasks = $project->getTasks();
 
+        if ($request->getMethod() === 'POST') {
+            $status = $request->request->get('status');
+            
+            if ($status === 'terminé') {
+                $project->setEndedAt(new \DateTime());
+            } else {
+                $project->setStatus($status);
+            }
+            
+            $entityManagerInterface->persist($project);
+            $entityManagerInterface->flush();
+        }
+    
         return $this->render('project/detail.html.twig', [
             'project' => $project,
             'tasks' => $tasks
