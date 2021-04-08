@@ -36,7 +36,7 @@ class ManagerAuthenticator extends AbstractFormLoginAuthenticator implements Pas
         $this->entityManager = $entityManager;
         $this->urlGenerator = $urlGenerator;
         $this->csrfTokenManager = $csrfTokenManager;
-        $this->passwordEncoder = $passwordEncoder;
+        $this->passwordEncoder = $passwordEncoder;        
     }
 
     public function supports(Request $request)
@@ -92,8 +92,7 @@ class ManagerAuthenticator extends AbstractFormLoginAuthenticator implements Pas
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey)
     {
-        if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
-            
+        if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {            
             return new RedirectResponse($targetPath);
         }
 
